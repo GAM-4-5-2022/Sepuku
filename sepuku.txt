@@ -1,0 +1,208 @@
+#include <iostream>
+#include <cstdlib>
+#include <conio.h>
+#include <ctime>
+#include <fstream>
+using namespace std;
+
+string sudoku; //globlne varijable
+string solution;
+string solutiona, sudokua;
+
+
+void print(int x, string sudoku){
+	int i,j,k,m;
+	if (x<0){
+		x=x+81;
+	}
+	string sudokucopy;
+	sudokucopy = sudoku;
+	sudokucopy[x] = 'X';
+	for (k=0 ; k<81 ; k=k+27){
+		for (i=k ; i<k+27 ; i=i+9){
+			for (j=i ; j<i+9 ; j=j+3){
+				for (m=j; m<j+3 ; m=m+1){
+					cout << " " << sudokucopy.substr(m,1) << " ";
+				}
+				cout << "|" ;
+			}
+			cout << endl ;
+		}
+		cout << "- - - - - - - - - - - - - - -" << endl;
+	}
+	cout << endl << endl << endl << endl << endl << endl << endl << endl << endl ;
+	
+}
+
+int main() {
+	int i,j,k,m,x,c;
+	x=0;
+	char a;
+	
+	ifstream suds("solution.txt");
+	ifstream sudl("sudokulist.txt");
+	srand(time(0));  // Initialize random number generator.
+	c = rand()%30+1;
+	for(int i=0;i<c;i++){
+    	getline(suds,solutiona);
+    	
+  	}
+  	for(int i=0;i<c;i++){
+    	getline(sudl,sudokua);
+  	}
+  	
+  	sudoku=sudokua;
+  	solution=solutiona;
+  	
+  	suds.close();
+  	sudl.close();
+  	
+  	//cout << sudoku << endl << solution << endl;
+	
+	
+	print(x, sudoku);
+	i=0;
+	while (i<5){
+		if (sudoku==solution){
+			cout << "BRAVO!!" << endl;
+			break;
+		}
+		int k; 
+		k = getch(); 
+		//cout << k;
+		if(k==0)
+    		k = getch(); 
+		switch(k)
+		{ 
+    		    case 119: //up 
+    		    		x=(x-9)%81;
+    		    		print(x, sudoku);
+    		    		//cout << x;
+    	    			break;
+	        	case 115: //down
+						x=(x+9)%81;
+						print(x, sudoku);
+						break;
+        		case 97: //left
+	        			x=(x-1)%81;
+	        			print(x, sudoku);
+						break;
+        		case 100: //right
+        				x=(x+1)%81;
+        				print(x, sudoku);
+						break;
+				case 49: //1
+						a='1';
+						if (sudoku[x]=='0'){
+							if (a==solution[x]){
+								sudoku[x]=a;
+							}
+							else{
+								cout<<"NO! You are wrong..."<<endl;
+							}
+						}
+						print(x, sudoku);
+						break;
+				case 50: //2
+						a='2';
+						if (sudoku[x]=='0'){
+							if (a==solution[x]){
+								sudoku[x]=a;
+							}
+							else{
+								cout<<"NO! You are wrong..."<<endl;
+							}
+						}
+						print(x, sudoku);
+						break;
+				case 51: //3
+						a='3';
+						if (sudoku[x]=='0'){
+							if (a==solution[x]){
+								sudoku[x]=a;
+							}
+							else{
+								cout<<"NO! You are wrong..."<<endl;
+							}
+						}
+						print(x, sudoku);
+						break;
+				case 52: //4
+						a='4';
+						if (sudoku[x]=='0'){
+							if (a==solution[x]){
+								sudoku[x]=a;
+							}
+							else{
+								cout<<"NO! You are wrong..."<<endl;
+							}
+						}
+						print(x, sudoku);
+						break;
+				case 53: //5
+						a='5';
+						if (sudoku[x]=='0'){
+							if (a==solution[x]){
+								sudoku[x]=a;
+							}
+							else{
+								cout<<"NO! You are wrong..."<<endl;
+							}
+						}
+						print(x, sudoku);
+						break;
+				case 54: //6
+						a='6';
+						if (sudoku[x]=='0'){
+							if (a==solution[x]){
+								sudoku[x]=a;
+							}
+							else{
+								cout<<"NO! You are wrong..."<<endl;
+							}
+						}
+						print(x, sudoku);
+						break;
+				case 55: //7
+						a='7';
+						if (sudoku[x]=='0'){
+							if (a==solution[x]){
+								sudoku[x]=a;
+							}
+							else{
+								cout<<"NO! You are wrong..."<<endl;
+							}
+						}
+						print(x, sudoku);
+						break;
+				case 56: //8
+						a='8';
+						if (sudoku[x]=='0'){
+							if (a==solution[x]){
+								sudoku[x]=a;
+							}
+							else{
+								cout<<"NO! You are wrong..."<<endl;
+							}
+						}
+						print(x, sudoku);
+						break;
+				case 57: //9
+						a='9';
+						if (sudoku[x]=='0'){
+							if (a==solution[x]){
+								sudoku[x]=a;
+							}
+							else{
+								cout<<"NO! You are wrong..."<<endl;
+							}
+						}
+						print(x, sudoku);
+						break;
+	            case 27: //esc
+	            		i=5;
+    	        		break;
+		}
+	}
+	return 0;
+}
